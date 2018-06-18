@@ -1,5 +1,13 @@
 import React from "react";
 
-const Input = props => <input type="email" className="form-control mb-3" placeholder={props.place}/>;
+const renderField = ({ input, label, type, className, meta: { touched, error } }) => (
+    <div>
+      <label>{label}</label>
+      <div>
+        <input {...input} placeholder={label} type={type} className={className}/>
+        {touched && error && <span>{error}</span>}
+      </div>
+    </div>
+  )
 
-export default Input;
+export default renderField;

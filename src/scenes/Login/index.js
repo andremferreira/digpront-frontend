@@ -1,52 +1,67 @@
 import React from "react";
 import Button from "../../components/button";
 import CardHeader from "../../components/CardHeader";
-import Input from "../../components/input";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 
-class Login extends React.Component {
+const renderField = ({
+  input,
+  label,
+  type,
+  className,
+  meta: { touched, error }
+}) => (
+  <div>
+    <label>{label}</label>
+    <div className={`form-group${touched && error ? ' has-error' : ''}`}>
+      <input {...input} placeholder={label} type={type} className={className} />
+      {touched && (error && <span>{error}</span>)}
+    </div>
+  </div>
+);
 
-  render() {
-    const { handleSubmit } = this.props;
-    return (
-      <div className="login">
-        <form onSubmit={handleSubmit}>
-          <CardHeader title="Digital Prontuário">
-            <Field
-              name="username"
-              component={Input}
-              //readOnly={readOnly}
-              cols="12"
-              //normalize={upper}
-              //validate={[required]}
-            />
-            <Field
-              name="password"
-              component={Input}
-              //readOnly={readOnly}
-              cols="12"
-              //normalize={upper}
-              //validate={[required]}
-            />
-            {/* <Input place="Login" />
-          <Input place="Senha" /> */}
-            <Button  name="Login" />
-          </CardHeader>
-        </form>
-      </div>
-    );
-  }
-}
+const required = value => (value ? undefined : "Campo obrigatório");
 
-Login = reduxForm({
-  form: "login"
-})(Login);
+let Login = props => {
+  const { handleSubmit, submitValues, submitting } = props;
+  return (
+    <div className="layout-center">
+      <form onSubmit={handleSubmit(submitValues)} className="was-validated">
+        <CardHeader title="Digital Prontuário">
+          <Field
+            name="username"
+            id="username"
+            className="form-control mb-3"
+            component={renderField}
+            type="text"
+            label="Email"
+            validate={[required]}
+          />
+          <Field
+            name="password"
+            id="password"
+            className="form-control mb-3"
+            component={renderField}
+            type="password"
+            label="Senha"
+            validate={[required]}
+          />
+          <Button name="Login" submitting={submitting} />
+        </CardHeader>
+      </form>
+    </div>
+  );
+};
 
-const mapDispatchToProps = {};
-Login = connect(
+Login = reduxForm({ form: "loginForm", initialValues: {} })(Login);
+
+const mapDispatchToProps = dispatch => {
+  return {
+    submitValues: values => dispatch({ type: "SUBMIT_LOGIN", payload: values })
+  };
+};
+
+export default connect(
   null,
   mapDispatchToProps
 )(Login);
-
-export default Login;
