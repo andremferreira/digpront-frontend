@@ -12,7 +12,9 @@ import { Switch, BrowserRouter as Router, Route } from "react-router-dom";
 import reducer from "./reducers";
 import createSagaMiddleware from "redux-saga";
 import sagas from "./sagas";
+
 import Login from "./scenes/Login";
+import Register from "./scenes/Register";
 
 const reduxDevTools =
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
@@ -22,7 +24,7 @@ const store = createStore(
   reducer,
   compose(
     applyMiddleware(sagaMiddleware),
-    reduxDevTools
+    // reduxDevTools
   )
 );
 
@@ -33,7 +35,8 @@ ReactDOM.render(
     <Router>
       <Switch>
         <Route exact path="/" component={App} />
-        <Route  path="/login" component={Login} />
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
       </Switch>
     </Router>
   </Provider>,

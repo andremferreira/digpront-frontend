@@ -26,7 +26,7 @@ let Login = props => {
   const { handleSubmit, submitValues, submitting } = props;
   return (
     <div className="layout-center">
-      <form onSubmit={handleSubmit(submitValues)} className="was-validated">
+      <form onSubmit={handleSubmit(submitValues)} className="form-signin">
         <CardHeader title="Digital Prontuário">
           <Field
             name="username"
@@ -47,6 +47,7 @@ let Login = props => {
             validate={[required]}
           />
           <Button name="Login" submitting={submitting} />
+
         </CardHeader>
       </form>
     </div>

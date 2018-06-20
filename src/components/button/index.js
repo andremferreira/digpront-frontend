@@ -1,7 +1,7 @@
 import React from "react";
 
 const Button = props => (
-  <button type="submit" className="btn btn-primary btn-block " disabled={props.submitting}>
+  <button type="submit" className="btn btn-primary btn-block" disabled={props.submitting}>
    {props.name}
   </button>
 );
