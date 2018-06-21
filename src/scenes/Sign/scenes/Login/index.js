@@ -1,6 +1,6 @@
 import React from "react";
-import Button from "../../components/button";
-import CardHeader from "../../components/CardHeader";
+import Button from "../../../../components/button";
+import CardHeader from "../../../../components/CardHeader";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 

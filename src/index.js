@@ -13,8 +13,8 @@ import reducer from "./reducers";
 import createSagaMiddleware from "redux-saga";
 import sagas from "./sagas";
 
-import Login from "./scenes/Login";
-import Register from "./scenes/Register";
+import Login from "./scenes/Sign/scenes/Login";
+import Register from "./scenes/Sign/scenes/Register";
 
 const reduxDevTools =
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();

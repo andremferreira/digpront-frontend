@@ -1,6 +1,6 @@
 import React from "react"
 import { Field } from "redux-form";
-import renderField from "../../../../components/RenderField"
+import renderField from "../../../../../../components/RenderField"
 
 const required = value => (value ? undefined : "Campo obrigatório");
 
@@ -8,7 +8,7 @@ const Personalize = () => (
     <div>
 
         <div className="custom-file mb-3">
-            <input type="file" class="custom-file-input" id="customFile" />
+            <input type="file" className="custom-file-input" id="customFile" />
             <label className="custom-file-label" for="customFile">Escolher</label>
         </div>
 

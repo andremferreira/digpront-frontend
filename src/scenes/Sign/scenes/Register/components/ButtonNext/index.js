@@ -1,9 +1,9 @@
 import React from "react";
 
-const Button = props => (
+const ButtonNext = props => (
   <button
     //type="submit"
-    className="btn btn-primary btn-block"
+    className="btn btn-primary col-2"
    // disabled={props.submitting}
     onClick={props.onClick}
   >
@@ -12,4 +12,4 @@ const Button = props => (
 );
 //className={`btn btn-${submitClass}`}
 
-export default Button;
+export default ButtonNext;

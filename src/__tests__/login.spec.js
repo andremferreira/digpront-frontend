@@ -1,7 +1,7 @@
 import React from "react";
 import { mount } from "enzyme";
 import configureStore from "redux-mock-store";
-import Login from "../scenes/Login";
+import Login from "../scenes/Sign/scenes/Login";
 import { Provider } from "react-redux";
 
 const initialState = {};

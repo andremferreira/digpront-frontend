@@ -1,6 +1,6 @@
 import React from "react"
 import { Field } from "redux-form";
-import renderField from "../../../../components/RenderField"
+import renderField from "../../../../../../components/RenderField"
 
 const required = value => (value ? undefined : "Campo obrigatório");
 

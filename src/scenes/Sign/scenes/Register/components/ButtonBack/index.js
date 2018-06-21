@@ -1,9 +1,9 @@
 import React from "react";
 
-const Button = props => (
+const ButtonBack = props => (
   <button
     //type="submit"
-    className="btn btn-primary btn-block"
+    className="btn btn-outline-primary mr-3 col-2"
    // disabled={props.submitting}
     onClick={props.onClick}
   >
@@ -12,4 +12,4 @@ const Button = props => (
 );
 //className={`btn btn-${submitClass}`}
 
-export default Button;
+export default ButtonBack;
