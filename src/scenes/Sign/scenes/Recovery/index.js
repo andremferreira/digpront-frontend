@@ -5,37 +5,37 @@ import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import renderField from "../../../../components/RenderField";
 import LinkButton from "../LinkButton";
-
 const required = value => (value ? undefined : "Campo obrigatório");
 
-let Login = props => {
+let Recovery = props => {
   const { handleSubmit, submitValues, submitting } = props;
   return (
     <div className="layout-center">
       <form onSubmit={handleSubmit(submitValues)} className="form-signin">
-        <CardHeader title="Digital Prontuário">
+        <CardHeader title="Recuperar Senha">
+          <Field
+            name="crm"
+            id="crm"
+            className="form-control"
+            component={renderField}
+            type="text"
+            label="CRM"
+            validate={[required]}
+          />
           <Field
             name="email"
             id="email"
             className="form-control"
             component={renderField}
-            type="text"
+            type="email"
             label="Email"
             validate={[required]}
           />
-          <Field
-            name="password"
-            id="password"
-            className="form-control"
-            component={renderField}
-            type="password"
-            label="Senha"
-            validate={[required]}
-          />
-          <Button name="Login" submitting={submitting} color="primary" />
+
+          <Button name="Recuperar"  submitting={submitting} color="info"/>
           <div className="d-flex justify-content-between mt-2 ">
-            <LinkButton color="text-muted" url="/recovery">
-              Esqueceu a senha?
+            <LinkButton color="text-muted " url="/login">
+              Voltar ao login
             </LinkButton>
             <LinkButton color="text-primary" url="/register">
               Criar Conta
@@ -47,15 +47,16 @@ let Login = props => {
   );
 };
 
-Login = reduxForm({ form: "loginForm", initialValues: {} })(Login);
+Recovery = reduxForm({ form: "recoveryForm", initialValues: {} })(Recovery);
 
 const mapDispatchToProps = dispatch => {
   return {
-    submitValues: values => dispatch({ type: "SUBMIT_LOGIN", payload: values })
+    submitValues: values =>
+      dispatch({ type: "SUBMIT_RECOVERY", payload: values })
   };
 };
 
 export default connect(
   null,
   mapDispatchToProps
-)(Login);
+)(Recovery);

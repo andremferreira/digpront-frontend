@@ -9,7 +9,7 @@ const renderField = ({
     meta: { touched, error }
   }) => (
         <div className={`form-group col-md-${col}`}>
-            <label>{label}</label>
+            <label className="font-weight-bold">{label}</label>
             <div className={`form-group${touched && error ? ' has-error' : ''}`}>
                 <input {...input} placeholder={label} type={type} className={className} />
                 {touched && (error && <span>{error}</span>)}

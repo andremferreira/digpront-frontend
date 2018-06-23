@@ -15,6 +15,7 @@ import sagas from "./sagas";
 
 import Login from "./scenes/Sign/scenes/Login";
 import Register from "./scenes/Sign/scenes/Register";
+import Recovery from "./scenes/Sign/scenes/Recovery";
 
 const reduxDevTools =
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
@@ -24,7 +25,7 @@ const store = createStore(
   reducer,
   compose(
     applyMiddleware(sagaMiddleware),
-    // reduxDevTools
+     reduxDevTools
   )
 );
 
@@ -37,6 +38,7 @@ ReactDOM.render(
         <Route exact path="/" component={App} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
+        <Route path="/recovery" component={Recovery} />
       </Switch>
     </Router>
   </Provider>,
