@@ -1,12 +1,14 @@
-const reducerLogin = (state = [], action) => {
+const login = (state = {}, action) => {
   switch (action.type) {
     case "LOGIN_SUCCESS":
-      console.log(action.payload);
+      return action.payload;
     case "LOGIN_ERROR":
       console.log("error", action.payload.errors);
+      return state;
+
     default:
       return state;
   }
 };
 
-export default reducerLogin;
+export default login;

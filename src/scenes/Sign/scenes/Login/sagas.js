@@ -6,7 +6,11 @@ export default function* submitLogin(action) {
   try {
     yield put(startSubmit("loginForm"));
     const response = yield call(Api.fetch, "oapi/login", action.payload);
-    yield put({ type: "LOGIN_SUCCESS", payload: response });
+
+    const { nome } = response.data;
+    save(response.data)
+
+    yield put({ type: "LOGIN_SUCCESS", payload: { name: nome, logged: true } });
     yield put(stopSubmit("loginForm"));
     yield put(reset("loginForm"));
   } catch (e) {
@@ -14,3 +18,7 @@ export default function* submitLogin(action) {
     yield put(stopSubmit("loginForm", e.response.data));
   }
 }
+
+const save = (data)=>{
+  localStorage.setItem("data", JSON.stringify(data));
+};

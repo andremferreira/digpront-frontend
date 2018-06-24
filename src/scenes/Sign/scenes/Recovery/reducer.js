@@ -1,4 +1,4 @@
-const reducerRecovery = (state = [], action) => {
+const recovery = (state = [], action) => {
   switch (action.type) {
     case "RECOVERY_SUCCESS":
       console.log(action.payload);
@@ -9,4 +9,4 @@ const reducerRecovery = (state = [], action) => {
   }
 };
 
-export default reducerRecovery;
+export default recovery;

@@ -1,11 +1,18 @@
 import React, { Component } from "react";
 import "./App.css";
+import { Route, Redirect } from "react-router-dom";
+import DashBoard from "./scenes/Dashboard";
+
+
+
+
 
 class App extends Component {
   render() {
     return (
-      <div className="layout-center">
-        <h3>Home</h3>
+      <div>
+        <h3>juh</h3>
+       
       </div>
     );
   }

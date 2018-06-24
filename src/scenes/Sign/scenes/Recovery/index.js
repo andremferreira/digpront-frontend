@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import renderField from "../../../../components/RenderField";
 import LinkButton from "../LinkButton";
+
 const required = value => (value ? undefined : "Campo obrigatório");
 
 let Recovery = props => {
@@ -32,7 +33,7 @@ let Recovery = props => {
             validate={[required]}
           />
 
-          <Button name="Recuperar"  submitting={submitting} color="info"/>
+          <Button name="Recuperar senha"  submitting={submitting} color="info"/>
           <div className="d-flex justify-content-between mt-2 ">
             <LinkButton color="text-muted " url="/login">
               Voltar ao login

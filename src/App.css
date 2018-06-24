@@ -5,9 +5,11 @@
   align-content: stretch;
 }
 
-.cor {
-  background-color: teal;
-  color: aliceblue
+.themeTeal {
+  background-color:lightseagreen;
+  color:whitesmoke;
+  font-weight: bold;
+  font-size:15px;
 }
 
 .form-signin {
