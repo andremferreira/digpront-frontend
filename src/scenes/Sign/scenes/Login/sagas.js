@@ -1,24 +1,32 @@
-import { put, call } from "redux-saga/effects";
+import { put, call, take, fork, cancelled } from "redux-saga/effects";
 import { startSubmit, stopSubmit, reset } from "redux-form";
 import Api from "../../../../api";
 
-export default function* submitLogin(action) {
+function* authorize(payload) {
   try {
     yield put(startSubmit("loginForm"));
-    const response = yield call(Api.fetch, "oapi/login", action.payload);
-
-    const { nome } = response.data;
-    save(response.data)
-
-    yield put({ type: "LOGIN_SUCCESS", payload: { name: nome, logged: true } });
+    const response = yield call(Api.fetch, "oapi/login", payload);
+    console.log(reponse);
+    //const { nome } = response.data;
+   // yield put({ type: "LOGIN_SUCCESS", payload: { name: nome, logged: true } });
+    yield call(Api.storageItem, { response });
     yield put(stopSubmit("loginForm"));
     yield put(reset("loginForm"));
+    return response;
   } catch (e) {
     yield put({ type: "LOGIN_ERROR", payload: e.response.data });
     yield put(stopSubmit("loginForm", e.response.data));
+  } finally {
+    if (yield cancelled()) {
+    }
   }
 }
 
-const save = (data)=>{
-  localStorage.setItem("data", JSON.stringify(data));
-};
+export default function* submitLogin() {
+  while (true) {
+    const { payload } = yield take("LOGIN_REQUEST");
+    yield fork(authorize, payload);
+    yield take(["LOGOUT", "LOGIN_ERROR"]);
+    yield call(Api.clearItem, "data");
+  }
+}

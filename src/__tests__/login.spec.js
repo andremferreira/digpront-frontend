@@ -19,14 +19,28 @@ const setup = props => {
 
   return {
     component: component,
-    button: component.find(Button),
-    linkButton:component.find(LinkButton),
+    button: component.find("button"),
+    linkButton: component.find(LinkButton),
     field: component.find("Field"),
     form: component.find("form")
   };
 };
 
 describe("<Login/>", () => {
+  let props;
+  let submitValues;
+  let handleSubmit;
+  beforeEach(() => {
+    submitValues = jest.fn();
+    handleSubmit = jest.fn();
+    props = {
+      submitValues: submitValues,
+      logged: true,
+      submitting: true,
+      handleSubmit: handleSubmit
+    };
+  });
+
   it("should render one Form", () => {
     const { form } = setup();
     expect(form.first().length).toEqual(1);
@@ -39,20 +53,16 @@ describe("<Login/>", () => {
 
   it("should render two Field", () => {
     const { field } = setup();
-    expect(field.length).toHaveLength(1);
-    
+    expect(field.at(0).length).toEqual(1);
   });
 
-
-  // it("should submit Button", () => {
-  //   const actions = {
-  //     onSubmit: jest.fn(),
-  //     handleSubmit: jest.fn()
-  //   };
-  //   const { button} = setup();
-  //   button.at(0).simulate("submit", { preventDefault: jest.fn() });
-  //   expect(actions.onSubmit).toHaveBeenCalledTimes(1);
-  // });
+  it("should submit Button", () => {
+ 
+    const { button } = setup(props);
+    console.log(button.debug());
+    button.at(0).simulate("submit", { preventDefault: jest.fn() });
+    expect(actions.onSubmit).toHaveBeenCalledTimes(1);
+  });
 
   // it("should submit Button", () => {
 
