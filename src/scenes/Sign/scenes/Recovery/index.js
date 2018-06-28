@@ -35,7 +35,7 @@ let Recovery = props => {
 
           <Button name="Recuperar senha"  submitting={submitting} color="info"/>
           <div className="d-flex justify-content-between mt-2 ">
-            <LinkButton color="text-muted " url="/login">
+            <LinkButton color="text-muted " url="/">
               Voltar ao login
             </LinkButton>
             <LinkButton color="text-primary" url="/register">

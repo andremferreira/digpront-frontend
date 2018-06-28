@@ -13,7 +13,7 @@ let Login = props => {
   const { handleSubmit, submitValues, submitting, logged } = props;
   return (
     <div className="layout-center">
-      {logged && <Redirect to="/" />}
+      {logged && <Redirect to="/dashboard" />}
 
       <form onSubmit={handleSubmit(submitValues)} className="form-signin">
         <CardHeader title="Digital Prontuário">
@@ -55,7 +55,7 @@ Login = reduxForm({ form: "loginForm", initialValues: {} })(Login);
 
 const mapDispatchToProps = dispatch => {
   return {
-    submitValues: values => dispatch({ type: "SUBMIT_LOGIN", payload: values })
+    submitValues: values => dispatch({ type: "LOGIN_REQUEST", payload: values })
   };
 };
 
