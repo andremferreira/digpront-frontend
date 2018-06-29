@@ -9,11 +9,12 @@ import LinkButton from "../LinkButton";
 const required = value => (value ? undefined : "Campo obrigatório");
 
 let Recovery = props => {
-  const { handleSubmit, submitValues, submitting } = props;
+  const { handleSubmit, submitValues, submitting, errors } = props;
   return (
     <div className="layout-center">
       <form onSubmit={handleSubmit(submitValues)} className="form-signin">
         <CardHeader title="Recuperar Senha">
+          <span className ="badge error mb-2">{errors && errors}</span>
           <Field
             name="crm"
             id="crm"
@@ -33,14 +34,12 @@ let Recovery = props => {
             validate={[required]}
           />
 
-          <Button name="Recuperar senha"  submitting={submitting} color="info"/>
+          <Button name="Recuperar senha" submitting={submitting} color="info" />
           <div className="d-flex justify-content-between mt-2 ">
             <LinkButton color="text-muted " url="/">
               Voltar ao login
             </LinkButton>
-            <LinkButton color="text-primary" url="/register">
-              Criar Conta
-            </LinkButton>
+          
           </div>
         </CardHeader>
       </form>
@@ -57,7 +56,11 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
+const mapStateToProps = state => ({
+  errors: state.recovery.errors
+});
+
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Recovery);

@@ -1,4 +1,4 @@
-import { put, call, take, fork,apply } from "redux-saga/effects";
+import { put, call, take, fork } from "redux-saga/effects";
 import { startSubmit, stopSubmit, reset } from "redux-form";
 import Api from "../../../../api";
 
@@ -18,7 +18,7 @@ export function* authorize(payload) {
   }
 }
 
-export  function* submitLogin() {
+export default  function* submitLogin() {
   while (true) {
     const { payload } = yield take("LOGIN_REQUEST");
     yield fork(authorize, payload);

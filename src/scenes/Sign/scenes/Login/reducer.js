@@ -3,9 +3,7 @@ const login = (state = {}, action) => {
     case "LOGIN_SUCCESS":
       return action.payload;
     case "LOGIN_ERROR":
-      console.log("error", action.payload.errors);
-      return state;
-
+    return action.payload;
     default:
       return state;
   }

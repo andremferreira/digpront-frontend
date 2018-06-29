@@ -5,11 +5,10 @@
   align-content: stretch;
 }
 
-.themeTeal {
-  background-color:lightseagreen;
-  color:whitesmoke;
-  font-weight: bold;
-  font-size:15px;
+.error {
+  background-color:lavenderblush;
+  color:indianred;
+  font-size:12px;
 }
 
 .form-signin {

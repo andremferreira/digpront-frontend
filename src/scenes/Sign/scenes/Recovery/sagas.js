@@ -1,4 +1,4 @@
-import { put, call } from "redux-saga/effects";
+import { put, call, cancelled } from "redux-saga/effects";
 import { startSubmit, stopSubmit, reset } from "redux-form";
 import Api from "../../../../api";
 
@@ -12,5 +12,9 @@ export default function* submitRecovery(action) {
   } catch (e) {
     yield put({ type: "RECOVERY_ERROR", payload: e.response.data });
     yield put(stopSubmit("recoveryForm", e.response.data));
+  } finally {
+    if (yield cancelled()) {
+      console.log("cancel");
+    }
   }
 }

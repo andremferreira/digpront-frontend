@@ -3,7 +3,7 @@ const recovery = (state = [], action) => {
     case "RECOVERY_SUCCESS":
       console.log(action.payload);
     case "RECOVERY_ERROR":
-      console.log("error", action.payload.errors);
+    return action.payload;
     default:
       return state;
   }

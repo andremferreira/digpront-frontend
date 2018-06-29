@@ -10,13 +10,14 @@ import { Redirect } from "react-router-dom";
 const required = value => (value ? undefined : "Campo obrigatório");
 
 let Login = props => {
-  const { handleSubmit, submitValues, submitting, logged } = props;
+  const { handleSubmit, submitValues, submitting, logged, errors } = props;
   return (
     <div className="layout-center">
       {logged && <Redirect to="/dashboard" />}
 
       <form onSubmit={handleSubmit(submitValues)} className="form-signin">
         <CardHeader title="Digital Prontuário">
+          <span className="badge error mb-2">{errors && errors}</span>
           <Field
             name="email"
             id="email"
@@ -35,7 +36,7 @@ let Login = props => {
             label="Senha"
             validate={[required]}
           />
-          <Button name="Entrar" submitting={submitting}  color="primary"/>
+          <Button name="Entrar" submitting={submitting} color="primary" />
 
           <div className="d-flex justify-content-between mt-2 ">
             <LinkButton color="text-muted" url="/recovery">
@@ -60,7 +61,11 @@ const mapDispatchToProps = dispatch => {
 };
 
 const mapStateToProps = state => ({
-  logged: state.login.logged
+  logged: state.login.logged,
+  errors: state.login.errors
 });
 
-export default connect(mapStateToProps,mapDispatchToProps)(Login);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Login);

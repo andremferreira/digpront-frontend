@@ -27,19 +27,7 @@ const setup = props => {
 };
 
 describe("<Login/>", () => {
-  let props;
-  let submitValues;
-  let handleSubmit;
-  beforeEach(() => {
-    submitValues = jest.fn();
-    handleSubmit = jest.fn();
-    props = {
-      submitValues: submitValues,
-      logged: true,
-      submitting: true,
-      handleSubmit: handleSubmit
-    };
-  });
+  
 
   it("should render one Form", () => {
     const { form } = setup();
