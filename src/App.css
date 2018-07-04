@@ -8,7 +8,15 @@
 .error {
   background-color:lavenderblush;
   color:indianred;
-  font-size:12px;
+  font-weight: bold;
+  font-size:13px;
+}
+
+.success {
+  background-color:oldlace;
+  color:peru;
+  font-weight: bold;
+  font-size:13px;
 }
 
 .form-signin {

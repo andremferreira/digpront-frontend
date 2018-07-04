@@ -9,12 +9,22 @@ import LinkButton from "../LinkButton";
 const required = value => (value ? undefined : "Campo obrigatório");
 
 let Recovery = props => {
-  const { handleSubmit, submitValues, submitting, errors } = props;
+  const { handleSubmit, submitValues, submitting, errors, data } = props;
   return (
     <div className="layout-center">
       <form onSubmit={handleSubmit(submitValues)} className="form-signin">
         <CardHeader title="Recuperar Senha">
-          <span className ="badge error mb-2">{errors && errors}</span>
+          <span className="badge error mb-2">{errors && errors}</span>
+          <div className="form-group">
+            <span className="badge error mb-2 form-control" />
+          </div>
+          <div className="alert error" role="alert">
+          {errors && errors}
+          </div>
+          <div className="alert success" role="alert">
+            O acesso da página de modificação de senha, foi encaminhada para seu
+            e-mail.
+          </div>
           <Field
             name="crm"
             id="crm"
@@ -39,7 +49,6 @@ let Recovery = props => {
             <LinkButton color="text-muted " url="/">
               Voltar ao login
             </LinkButton>
-          
           </div>
         </CardHeader>
       </form>
@@ -57,6 +66,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 const mapStateToProps = state => ({
+  data: state.recovery.data,
   errors: state.recovery.errors
 });
 
