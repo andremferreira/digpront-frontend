@@ -10,13 +10,15 @@
   color:indianred;
   font-weight: bold;
   font-size:13px;
+  border: 1px solid mistyrose;
 }
 
 .success {
-  background-color:oldlace;
+  background-color: seashell;
   color:peru;
   font-weight: bold;
   font-size:13px;
+  border: 1px solid peachpuff;
 }
 
 .form-signin {

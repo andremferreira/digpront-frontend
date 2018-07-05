@@ -4,6 +4,8 @@ import submitRecovery from "../scenes/Sign/scenes/Recovery/sagas";
 
 //Li@7031811
 export default function* rootSaga() {
-  yield fork(takeLatest, "SUBMIT_RECOVERY", submitRecovery);
-  yield fork(submitLogin);
+  yield [
+    fork(takeLatest, "SUBMIT_RECOVERY", submitRecovery),
+    fork(submitLogin)
+  ];
 }

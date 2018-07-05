@@ -6,51 +6,59 @@ import { Field, reduxForm } from "redux-form";
 import renderField from "../../../../components/RenderField";
 import LinkButton from "../LinkButton";
 import { Redirect } from "react-router-dom";
+import Alert from "../../../../components/alert";
 
 const required = value => (value ? undefined : "Campo obrigatório");
 
-let Login = props => {
-  const { handleSubmit, submitValues, submitting, logged, errors } = props;
-  return (
-    <div className="layout-center">
-      {logged && <Redirect to="/dashboard" />}
+class Login extends React.Component {
 
-      <form onSubmit={handleSubmit(submitValues)} className="form-signin">
-        <CardHeader title="Digital Prontuário">
-          <span className="badge error mb-2">{errors && errors}</span>
-          <Field
-            name="email"
-            id="email"
-            className="form-control"
-            component={renderField}
-            type="text"
-            label="Email"
-            validate={[required]}
-          />
-          <Field
-            name="password"
-            id="password"
-            className="form-control"
-            component={renderField}
-            type="password"
-            label="Senha"
-            validate={[required]}
-          />
-          <Button name="Entrar" submitting={submitting} color="primary" />
+  componentDidMount() {
+    this.props.dispatch({ type: "INIT" });
+  }
+  
+  render() {
+    const { handleSubmit, submitValues, submitting, logged, errors } = this.props;
+    return (
+      <div className="layout-center">
+        {logged && <Redirect to="/dashboard" />}
 
-          <div className="d-flex justify-content-between mt-2 ">
-            <LinkButton color="text-muted" url="/recovery">
-              Esqueceu a senha?
-            </LinkButton>
-            <LinkButton color="text-primary" url="/register">
-              Criar Conta
-            </LinkButton>
-          </div>
-        </CardHeader>
-      </form>
-    </div>
-  );
-};
+        <form onSubmit={handleSubmit(submitValues)} className="form-signin">
+          <CardHeader title="Digital Prontuário">
+            <Alert errors={errors} />
+            <Field
+              name="email"
+              id="email"
+              className="form-control"
+              component={renderField}
+              type="text"
+              label="Email"
+              validate={[required]}
+            />
+            <Field
+              name="password"
+              id="password"
+              className="form-control"
+              component={renderField}
+              type="password"
+              label="Senha"
+              validate={[required]}
+            />
+            <Button name="Entrar" submitting={submitting} color="primary" />
+
+            <div className="d-flex justify-content-between mt-2 ">
+              <LinkButton color="text-muted" url="/recovery">
+                Esqueceu a senha?
+              </LinkButton>
+              <LinkButton color="text-primary" url="/register">
+                Criar Conta
+              </LinkButton>
+            </div>
+          </CardHeader>
+        </form>
+      </div>
+    );
+  }
+}
 
 Login = reduxForm({ form: "loginForm", initialValues: {} })(Login);
 

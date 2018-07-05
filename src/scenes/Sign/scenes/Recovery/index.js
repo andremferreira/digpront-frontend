@@ -5,56 +5,57 @@ import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import renderField from "../../../../components/RenderField";
 import LinkButton from "../LinkButton";
+import Alert from "../../../../components/alert";
 
 const required = value => (value ? undefined : "Campo obrigatório");
 
-let Recovery = props => {
-  const { handleSubmit, submitValues, submitting, errors, data } = props;
-  return (
-    <div className="layout-center">
-      <form onSubmit={handleSubmit(submitValues)} className="form-signin">
-        <CardHeader title="Recuperar Senha">
-          <span className="badge error mb-2">{errors && errors}</span>
-          <div className="form-group">
-            <span className="badge error mb-2 form-control" />
-          </div>
-          <div className="alert error" role="alert">
-          {errors && errors}
-          </div>
-          <div className="alert success" role="alert">
-            O acesso da página de modificação de senha, foi encaminhada para seu
-            e-mail.
-          </div>
-          <Field
-            name="crm"
-            id="crm"
-            className="form-control"
-            component={renderField}
-            type="text"
-            label="CRM"
-            validate={[required]}
-          />
-          <Field
-            name="email"
-            id="email"
-            className="form-control"
-            component={renderField}
-            type="email"
-            label="Email"
-            validate={[required]}
-          />
+class Recovery extends React.Component {
+  componentDidMount() {
+    this.props.dispatch({ type: "INIT" });
+  }
 
-          <Button name="Recuperar senha" submitting={submitting} color="info" />
-          <div className="d-flex justify-content-between mt-2 ">
-            <LinkButton color="text-muted " url="/">
-              Voltar ao login
-            </LinkButton>
-          </div>
-        </CardHeader>
-      </form>
-    </div>
-  );
-};
+  render() {
+    const { handleSubmit, submitValues, submitting, errors, data } = this.props;
+    return (
+      <div className="layout-center">
+        <form onSubmit={handleSubmit(submitValues)} className="form-signin">
+          <CardHeader title="Recuperar Senha">
+            <Alert errors={errors} data={data} />
+            <Field
+              name="crm"
+              id="crm"
+              className="form-control"
+              component={renderField}
+              type="text"
+              label="CRM"
+              validate={[required]}
+            />
+            <Field
+              name="email"
+              id="email"
+              className="form-control"
+              component={renderField}
+              type="email"
+              label="Email"
+              validate={[required]}
+            />
+
+            <Button
+              name="Recuperar senha"
+              submitting={submitting}
+              color="info"
+            />
+            <div className="d-flex justify-content-between mt-2 ">
+              <LinkButton color="text-muted " url="/">
+                Voltar ao login
+              </LinkButton>
+            </div>
+          </CardHeader>
+        </form>
+      </div>
+    );
+  }
+}
 
 Recovery = reduxForm({ form: "recoveryForm", initialValues: {} })(Recovery);
 
