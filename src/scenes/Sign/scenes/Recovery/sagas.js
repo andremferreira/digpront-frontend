@@ -5,7 +5,7 @@ import Api from "../../../../api";
 export default function* submitRecovery(action) {
   try {
     yield put(startSubmit("recoveryForm"));
-    const response = yield call(Api.fetch, "oapi/recoveryPass", action.payload);
+    const response = yield call(Api.post, "oapi/recoveryPass", action.payload);
     yield put({ type: "RECOVERY_SUCCESS", payload: response });
     yield put(stopSubmit("recoveryForm"));
     yield put(reset("recoveryForm"));

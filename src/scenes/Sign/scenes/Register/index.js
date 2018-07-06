@@ -9,6 +9,7 @@ import Degree from "../Register/components/Degree";
 import Personalize from "../Register/components/Personalize";
 
 import Stepper from "react-stepper-horizontal";
+import Button from "./components/Button";
 
 const required = value => (value ? undefined : "Campo obrigatório");
 
@@ -56,8 +57,8 @@ class Register extends React.Component {
     const { handleSubmit, submitValues, submitting, invalid } = this.props;
     const { steps, currentStep } = this.state;
     return (
-      <div className="layout-center">
-        <form onSubmit={handleSubmit(submitValues)} className="form-register">
+      <div className="container">
+        <form onSubmit={handleSubmit(submitValues)}>
           <Stepper
             className="mb-3"
             steps={steps}
@@ -68,23 +69,20 @@ class Register extends React.Component {
             {currentStep === 0 && <PersonalData required={required} />}
             {currentStep === 1 && <Degree required={required} />}
             {currentStep === 2 && <Personalize required={required} />}
-
-            <button
-              type="button"
-              className="btn btn-outline-primary mr-3 col-2"
-              onClick={this.onClickBack}
-            >
-              Voltar
-            </button>
-            <button
-              type="submit"
-              disabled={invalid}
-              className="btn btn-primary col-2"
-              // submitting={submitting}
+            {currentStep !== 0 && (
+              <Button
+                name="voltar"
+                onClick={this.onClickBack}
+                outline="btn-outline-primary"
+              />
+            )}
+            <Button
+              name="Avançar"
               onClick={this.onClickNext}
-            >
-              Avançar
-            </button>
+              outline="btn-primary"
+              submitting={submitting}
+              invalid={invalid}
+            />
           </CardHeader>
         </form>
       </div>

@@ -5,7 +5,7 @@ import Api from "../../../../api";
 export function* authorize(payload) {
   try {
     yield put(startSubmit("loginForm"));
-    const response = yield call(Api.fetch, "oapi/login", payload);
+    const response = yield call(Api.post, "oapi/login", payload);
     const { nome } = response.data;
     yield put({ type: "LOGIN_SUCCESS", payload: { name: nome, logged: true } });
     yield call(Api.storageItem, "data", response.data);

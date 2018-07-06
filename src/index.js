@@ -17,7 +17,7 @@ const store = createStore(
   reducer,
   compose(
     applyMiddleware(sagaMiddleware),
-    reduxDevTools
+   // reduxDevTools
   )
 );
 sagaMiddleware.run(sagas);

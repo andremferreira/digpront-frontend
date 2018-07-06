@@ -1,6 +1,8 @@
 import React from "react";
 import { Field } from "redux-form";
 import renderField from "../../../../../../components/RenderField";
+import renderDatePicker from "../../../../../../components/datePicker";
+
 
 const PersonalData = ({ required }) => (
   <div>
@@ -32,7 +34,7 @@ const PersonalData = ({ required }) => (
         id="email"
         className="form-control"
         component={renderField}
-        type="text"
+        type="email"
         label="Email"
         validate={[required]}
         col="6"
@@ -42,7 +44,7 @@ const PersonalData = ({ required }) => (
         id="phone"
         className="form-control"
         component={renderField}
-        type="text"
+        type="number"
         label="Celular"
         validate={[required]}
         col="6"
@@ -54,32 +56,30 @@ const PersonalData = ({ required }) => (
         id="fisrt_password"
         className="form-control"
         component={renderField}
-        type="text"
+        type="password"
         label="Senha"
         validate={[required]}
-        col="6"
+        col="3"
       />
       <Field
         name="last_password"
         id="last_password"
-        className="form-control mb-3"
+        className="form-control"
         component={renderField}
-        type="text"
+        type="password"
         label="Nova Senha"
         validate={[required]}
-        col="6"
+        col="3"
       />
-    </div>
-    <div className="form-row">
+  
       <Field
         name="birth_date"
         id="birth_date"
         className="form-control"
-        component={renderField}
-        type="text"
+        component={renderDatePicker}
         label="Data Nascimento"
         validate={[required]}
-        col="6"
+        col="2"
       />
       <Field
         name="cep"
@@ -89,7 +89,7 @@ const PersonalData = ({ required }) => (
         type="text"
         label="Cep"
         validate={[required]}
-        col="6"
+        col="4"
       />
     </div>
   </div>

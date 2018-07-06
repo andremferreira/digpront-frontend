@@ -4,12 +4,7 @@ import renderField from "../../../../../../components/RenderField";
 
 const Personalize = ({ required }) => (
   <div>
-    <div className="custom-file mb-3">
-      <input type="file" className="custom-file-input" id="customFile" />
-      <label className="custom-file-label" for="customFile">
-        Escolher
-      </label>
-    </div>
+    
 
     <div className="form-row">
       <Field
