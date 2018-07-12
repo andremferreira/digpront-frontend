@@ -3,7 +3,7 @@ import Button from "../../../../components/button";
 import CardHeader from "../../../../components/CardHeader";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
-import renderField from "../../../../components/RenderField";
+import renderInput from "../../../../components/renderInput";
 import LinkButton from "../LinkButton";
 import { Redirect } from "react-router-dom";
 import Alert from "../../../../components/alert";
@@ -23,13 +23,13 @@ class Login extends React.Component {
         {logged && <Redirect to="/dashboard" />}
 
         <form onSubmit={handleSubmit(submitValues)} className="form-signin">
-          <CardHeader title="Digital Prontuário">
+          <CardHeader title="Digital Prontuário" shadow="shadow-sm">
             <Alert errors={errors} />
             <Field
               name="email"
               id="email"
               className="form-control"
-              component={renderField}
+              component={renderInput}
               type="text"
               label="Email"
               validate={[required]}
@@ -38,7 +38,7 @@ class Login extends React.Component {
               name="password"
               id="password"
               className="form-control"
-              component={renderField}
+              component={renderInput}
               type="password"
               label="Senha"
               validate={[required]}

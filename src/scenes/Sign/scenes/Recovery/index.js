@@ -3,7 +3,7 @@ import Button from "../../../../components/button";
 import CardHeader from "../../../../components/CardHeader";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
-import renderField from "../../../../components/RenderField";
+import renderInput from "../../../../components/renderInput";
 import LinkButton from "../LinkButton";
 import Alert from "../../../../components/alert";
 
@@ -19,13 +19,13 @@ class Recovery extends React.Component {
     return (
       <div className="layout-center">
         <form onSubmit={handleSubmit(submitValues)} className="form-signin">
-          <CardHeader title="Recuperar Senha">
+          <CardHeader title="Recuperar Senha" shadow="shadow-sm">
             <Alert errors={errors} data={data} />
             <Field
               name="crm"
               id="crm"
               className="form-control"
-              component={renderField}
+              component={renderInput}
               type="text"
               label="CRM"
               validate={[required]}
@@ -34,7 +34,7 @@ class Recovery extends React.Component {
               name="email"
               id="email"
               className="form-control"
-              component={renderField}
+              component={renderInput}
               type="email"
               label="Email"
               validate={[required]}

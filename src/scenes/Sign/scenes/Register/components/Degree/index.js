@@ -1,18 +1,16 @@
 import React from "react";
 import { Field } from "redux-form";
-import renderField from "../../../../../../components/RenderField";
+import renderTextArea from "../../../../../../components/renderTextArea";
 
-const Degree = ({ required }) => (
+const Degree = () => (
   <div>
     <div className="form-row">
       <Field
         name="academic_education"
         id="academic_education"
-        className="form-control"
-        component={renderField}
-        type="text"
+        className="form-control textArea"
+        component={renderTextArea}
         label="Formação Acadêmica"
-        validate={[required]}
         col="12"
       />
     </div>
@@ -20,11 +18,9 @@ const Degree = ({ required }) => (
       <Field
         name="specialization"
         id="specialization"
-        className="form-control"
-        component={renderField}
-        type="text"
+        className="form-control textArea"
+        component={renderTextArea}
         label="Especialização / Mestrado / Doutorado"
-        validate={[required]}
         col="12"
       />
     </div>
@@ -32,11 +28,9 @@ const Degree = ({ required }) => (
       <Field
         name="extra_courses"
         id="extra_courses"
-        className="form-control"
-        component={renderField}
-        type="text"
+        className="form-control textArea"
+        component={renderTextArea}
         label="Cursos Extras"
-        validate={[required]}
         col="12"
       />
     </div>
@@ -44,11 +38,9 @@ const Degree = ({ required }) => (
       <Field
         name="published_articles"
         id="published_articles"
-        className="form-control"
-        component={renderField}
-        type="text"
+        className="form-control textArea"
+        component={renderTextArea}
         label="Artigos Publicados"
-        validate={[required]}
         col="12"
       />
     </div>

@@ -9,6 +9,7 @@ import {
   withRouter
 } from "react-router-dom";
 import LinkButton from "../Sign/scenes/LinkButton";
+import { NavBar } from "../../components/NavBar";
 
 class DashBoard extends React.Component {
   constructor(props) {
@@ -27,18 +28,20 @@ class DashBoard extends React.Component {
     return (
       <Router>
         <div>
-          <nav className="navbar top-navbar navbar-expand-md navbar-light bg-white shadow-sm ">
-            <a className="navbar-brand col-md-2" href="#">
-              Empresa
-            </a>
-          </nav>
+          <NavBar
+            title="DigProntuário"
+            color="navbar-light"
+            bg="bg-white"
+            shadow="shadow-sm"
+          />
+
           <div className="container-fluid">
             <div className="row">
               <main
                 role="main"
                 className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4"
               >
-                <Button onClick={this.click} name="logout"/>
+                <Button onClick={this.click} name="logout" />
                 <LinkButton color="text-muted" url="/patient">
                   Esqueceu a senha?
                 </LinkButton>

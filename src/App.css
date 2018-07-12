@@ -6,21 +6,27 @@
 }
 
 .error {
-  background-color:lavenderblush;
-  color:indianred;
+  background-color: lavenderblush;
+  color: indianred;
   font-weight: bold;
-  font-size:13px;
+  font-size: 13px;
   border: 1px solid mistyrose;
 }
 
 .success {
   background-color: seashell;
-  color:peru;
+  color: peru;
   font-weight: bold;
-  font-size:13px;
+  font-size: 13px;
   border: 1px solid peachpuff;
 }
 
+.theme {
+  color: steelblue;
+}
+.textArea {
+  height: 81px;
+}
 .form-signin {
   width: 100%;
   max-width: 360px;

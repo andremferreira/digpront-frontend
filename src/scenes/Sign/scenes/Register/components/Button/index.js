@@ -5,7 +5,7 @@ const Button = props => {
   return (
     <button
       type="submit"
-      className={`btn ${outline} mr-3 col-2 shadow-sm`}
+      className={`btn ${outline} mr-3 `}
       disabled={props.submitting || props.invalid}
       onClick={props.onClick}
     >

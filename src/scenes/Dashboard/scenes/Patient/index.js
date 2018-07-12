@@ -3,8 +3,7 @@ import Button from "../../../../components/button";
 import CardHeader from "../../../../components/CardHeader";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
-import renderField from "../../../../components/RenderField";
-import LinkButton from "../../../Sign/scenes/LinkButton";
+import renderInput  from "../../../../components/renderInput";
 
 const required = value => (value ? undefined : "Campo obrigatório");
 
@@ -19,7 +18,7 @@ let Patient = props => {
             name="email"
             id="email"
             className="form-control"
-            component={renderField}
+            component={renderInput}
             type="text"
             label="Email"
             validate={[required]}
