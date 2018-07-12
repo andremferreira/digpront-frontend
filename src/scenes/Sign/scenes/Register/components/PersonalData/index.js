@@ -75,6 +75,7 @@ const PersonalData = ({ required }) => (
         label="Data Nascimento"
         validate={[required]}
         col="6"
+       
       />
       <Field
         name="cep"

@@ -8,7 +8,7 @@ import LinkButton from "../LinkButton";
 import { Redirect } from "react-router-dom";
 import Alert from "../../../../components/alert";
 
-const required = value => (value ? undefined : "Campo obrigatório");
+const required = value => (value ? undefined : "Campo obrigatório!");
 
 class Login extends React.Component {
 

@@ -14,7 +14,12 @@ const renderInput = ({
     </small>
     <div className={`form-group${touched && error ? " has-error" : ""}`}>
       <input {...input} placeholder={label} type={type} className={className} />
-      {touched && (error && <span>{error}</span>)}
+      {touched &&
+        (error && (
+          <small>
+            <span className="text-danger">{error}</span>
+          </small>
+        ))}
     </div>
   </div>
 );

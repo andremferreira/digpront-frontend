@@ -5,7 +5,7 @@ import Api from "../../../../api";
 export default function* submitRegister(action) {
   try {
     yield put(startSubmit("registerForm"));
-    console.log(action.payload)
+    console.log("register",action.payload)
     //const response = yield call(Api.post, "/signup", action.payload);
    // yield put({ type: "REGISTER_SUCCESS", payload: response });
     yield put(stopSubmit("registerForm"));
