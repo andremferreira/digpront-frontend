@@ -6,8 +6,8 @@ const Degree = () => (
   <div>
     <div className="form-row">
       <Field
-        name="academic_education"
-        id="academic_education"
+        name="formacaoAcademica"
+        id="formacaoAcademica"
         className="form-control textArea"
         component={renderTextArea}
         label="Formação Acadêmica"
@@ -16,8 +16,8 @@ const Degree = () => (
     </div>
     <div className="form-row">
       <Field
-        name="specialization"
-        id="specialization"
+        name="posGraduacao"
+        id="posGraduacao"
         className="form-control textArea"
         component={renderTextArea}
         label="Especialização / Mestrado / Doutorado"
@@ -26,18 +26,18 @@ const Degree = () => (
     </div>
     <div className="form-row">
       <Field
-        name="extra_courses"
-        id="extra_courses"
+        name="cursoAprimoramento"
+        id="cursoAprimoramento"
         className="form-control textArea"
         component={renderTextArea}
-        label="Cursos Extras"
+        label="Curso Aprimoramento"
         col="12"
       />
     </div>
     <div className="form-row">
       <Field
-        name="published_articles"
-        id="published_articles"
+        name="artigo"
+        id="artigo"
         className="form-control textArea"
         component={renderTextArea}
         label="Artigos Publicados"

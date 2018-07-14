@@ -6,8 +6,8 @@ const Personalize = ({ required }) => (
   <div>
     <div className="form-row">
       <Field
-        name="title_apresentation"
-        id="title_apresentation"
+        name="tituloApresentacao"
+        id="tituloApresentacao"
         className="form-control"
         component={renderInput}
         type="text"
@@ -18,8 +18,8 @@ const Personalize = ({ required }) => (
     </div>
     <div className="form-row">
       <Field
-        name="maturity"
-        id="maturity"
+        name="avisoVencimento"
+        id="avisoVencimento"
         className="form-control"
         component={renderInput}
         type="text"
@@ -30,8 +30,8 @@ const Personalize = ({ required }) => (
     </div>
     <div className="form-row">
       <Field
-        name="watch_pages"
-        id="watch_pages"
+        name="paginaContato"
+        id="paginaContato"
         className="form-control"
         component={renderInput}
         type="text"

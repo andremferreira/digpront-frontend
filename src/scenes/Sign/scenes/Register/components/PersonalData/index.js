@@ -7,8 +7,8 @@ const PersonalData = ({ required }) => (
   <div>
     <div className="form-row">
       <Field
-        name="name"
-        id="name"
+        name="nome"
+        id="nome"
         className="form-control"
         component={renderInput}
         type="text"
@@ -17,8 +17,8 @@ const PersonalData = ({ required }) => (
         col="12"
       />
       <Field
-        name="last_name"
-        id="last_name"
+        name="sobrenome"
+        id="sobrenome"
         className="form-control"
         component={renderInput}
         type="text"
@@ -38,7 +38,6 @@ const PersonalData = ({ required }) => (
         col="12"
       />
       <Field
-        name="fisrt_password"
         id="fisrt_password"
         className="form-control"
         component={renderInput}
@@ -48,8 +47,8 @@ const PersonalData = ({ required }) => (
         col="6"
       />
       <Field
-        name="last_password"
-        id="last_password"
+        name="password"
+        id="password"
         className="form-control"
         component={renderInput}
         type="password"
@@ -58,18 +57,18 @@ const PersonalData = ({ required }) => (
         col="6"
       />
       <Field
-        name="phone"
-        id="phone"
+        name="celular"
+        id="celular"
         className="form-control"
         component={renderInput}
-        type="number"
+        type="text"
         label="Celular"
         validate={[required]}
         col="6"
       />
       <Field
-        name="birth_date"
-        id="birth_date"
+        name="dataNascimento"
+        id="dataNascimento"
         className="form-control"
         component={renderDatePicker}
         label="Data Nascimento"

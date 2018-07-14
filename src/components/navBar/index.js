@@ -13,9 +13,7 @@ const NavBar = props => {
         {props.title}
       </a>
       <ul className="nav navbar-nav mr-auto">
-        <li class="nav-item">
-        <a href="javascript">oi</a>
-        </li>
+       
       </ul>
       {props.children}
     </nav>

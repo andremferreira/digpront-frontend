@@ -3,14 +3,14 @@ import React from "react";
 import { connect } from "react-redux";
 import { reduxForm } from "redux-form";
 
-import CardHeader from "../../../../components/CardHeader";
+import CardHeader from "../../../../components/cardHeader";
 import PersonalData from "../Register/components/PersonalData";
 import Degree from "../Register/components/Degree";
 import Personalize from "../Register/components/Personalize";
 
 import Stepper from "react-stepper-horizontal";
 import Button from "./components/Button";
-import { NavBar } from "../../../../components/NavBar";
+import  NavBar  from "../../../../components/navBar";
 import { Apresentation } from "./components/Apresentation";
 
 const required = value => (value ? undefined : "Campo obrigatório");
@@ -38,9 +38,9 @@ class Register extends React.Component {
   }
 
   onClickNext(e) {
-    e.preventDefault();
     const { currentStep } = this.state;
     if (currentStep <= 3) {
+      e.preventDefault();
       this.setState({
         currentStep: currentStep + 1
       });
@@ -96,18 +96,20 @@ class Register extends React.Component {
                 </Apresentation>
               </div>
               <div className="col-6 mt-3">
-                {currentStep === 0 && <PersonalData required={required} />}
-                {currentStep === 1 && <Degree required={required} />}
-                {currentStep === 2 && <Personalize required={required} />}
+                  {currentStep === 0 && <PersonalData required={required} />}
+                  {currentStep === 1 && <Degree required={required} />}
+                  {currentStep === 2 && <Personalize required={required} />}
               </div>
               <div className="col-12 ">
-                <Button
-                  name="Próximo"
-                  onClick={this.onClickNext}
-                  outline="btn-primary float-right"
-                  submitting={submitting}
-                  invalid={invalid}
-                />
+                {currentStep !== 2 && (
+                  <Button
+                    name="Próximo"
+                    onClick={this.onClickNext}
+                    outline="btn-primary float-right"
+                    // submitting={submitting}
+                    invalid={invalid}
+                  />
+                )}
                 {currentStep !== 0 && (
                   <Button
                     name="voltar"
@@ -115,11 +117,14 @@ class Register extends React.Component {
                     outline="btn-outline-primary float-right"
                   />
                 )}
+                {currentStep === 2 && (
+                  <button type="submit" className={`btn  mr-3 `}>
+                    Enviar
+                  </button>
+                )}
               </div>
             </div>
-            
           </CardHeader>
-          
         </form>
       </div>
     );
