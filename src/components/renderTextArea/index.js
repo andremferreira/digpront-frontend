@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const renderTextArea = ({
   input,
@@ -16,5 +17,12 @@ const renderTextArea = ({
     </div>
   </div>
 );
+
+renderTextArea.propTypes = {
+  label: PropTypes.string,
+  col: PropTypes.string,
+  input: PropTypes.object,
+  type: PropTypes.string
+};
 
 export default renderTextArea;

@@ -2,6 +2,7 @@ import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
+import PropTypes from "prop-types";
 
 const renderDatePicker = ({
   input,
@@ -18,12 +19,18 @@ const renderDatePicker = ({
       <DatePicker
         className={className}
         {...input}
-        dateFormat="MM/DD/YYYY"
+        dateFormat="DD/MM/YYYY"
         selected={input.value ? moment(input.value) : null}
       />
       {touched && (error && <span>{error}</span>)}
     </div>
   </div>
 );
+
+renderDatePicker.propTypes = {
+  label: PropTypes.string,
+  col: PropTypes.string,
+  input: PropTypes.object
+};
 
 export default renderDatePicker;

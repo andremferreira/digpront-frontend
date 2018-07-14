@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const renderInput = ({
   input,
@@ -24,4 +25,10 @@ const renderInput = ({
   </div>
 );
 
+renderInput.propTypes = {
+  label: PropTypes.string,
+  col: PropTypes.string,
+  input: PropTypes.object,
+  type: PropTypes.string
+};
 export default renderInput;

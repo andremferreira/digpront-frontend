@@ -1,6 +1,8 @@
 import React from "react";
 
-export const NavBar = props => {
+import PropTypes from "prop-types";
+
+const NavBar = props => {
   return (
     <nav
       className={`navbar top-navbar navbar-expand-md ${props.color} ${
@@ -10,8 +12,21 @@ export const NavBar = props => {
       <a className="navbar-brand col-md-2" href="#">
         {props.title}
       </a>
-      <ul className="nav navbar-nav mr-auto" />
+      <ul className="nav navbar-nav mr-auto">
+        <li class="nav-item">
+        <a href="javascript">oi</a>
+        </li>
+      </ul>
       {props.children}
     </nav>
   );
 };
+
+NavBar.propTypes = {
+  color: PropTypes.string,
+  bg: PropTypes.string,
+  shadow: PropTypes.string,
+  title: PropTypes.string
+};
+
+export default NavBar;

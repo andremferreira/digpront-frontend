@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Button = props => (
   <button
@@ -10,5 +11,12 @@ const Button = props => (
     {props.name}
   </button>
 );
+
+Button.propTypes = {
+  submitting: PropTypes.bool,
+  name: PropTypes.string,
+  onClick: PropTypes.func,
+  color: PropTypes.string
+};
 
 export default Button;
