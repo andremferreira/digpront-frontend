@@ -13,6 +13,10 @@ export default class Api {
     return localStorage.removeItem(key);
   }
 
+  static getStorageItem(key) {
+    return JSON.parse(localStorage.getItem(key));
+  }
+
   static storageItem(key, data) {
     return localStorage.setItem(key, JSON.stringify(data));
   }

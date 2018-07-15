@@ -1,19 +1,19 @@
 import React from "react";
-import {  connect } from "react-redux";
+import { connect } from "react-redux";
 
 const Auth = Component => {
   class App extends Component {
     componentDidMount() {
-      if (!this.props.logged) this.redirect();
+      const { verifyAuthenticated, logged, history } = this.props;
+      if (!logged) {
+        verifyAuthenticated(history);
+      }
     }
 
     componentWillReceiveProps(nextProps) {
       if (nextProps.logged !== this.props.logged) {
       }
     }
-
-    redirect = () => this.props.history.push("/");
-
     render() {
       return <Component {...this.props} />;
     }
@@ -22,9 +22,15 @@ const Auth = Component => {
     logged: state.login.logged
   });
 
+  const mapDispatchToProps = dispatch => {
+    return {
+      verifyAuthenticated: history =>
+        dispatch({ type: "AUTHENTICATED", history })
+    };
+  };
   return connect(
     mapStateToProps,
-    null
+    mapDispatchToProps
   )(App);
 };
 

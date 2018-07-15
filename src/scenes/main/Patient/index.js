@@ -1,9 +1,8 @@
 import React from "react";
-import Button from "../../../../components/button";
-import CardHeader from "../../../../components/cardHeader";
+import CardHeader from "../../../components/cardHeader";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
-import renderInput  from "../../../../components/renderInput";
+import renderInput  from "../../../components/renderInput";
 
 const required = value => (value ? undefined : "Campo obrigatório");
 

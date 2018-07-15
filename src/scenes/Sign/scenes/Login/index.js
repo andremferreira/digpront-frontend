@@ -20,7 +20,7 @@ class Login extends React.Component {
     const { handleSubmit, submitValues, submitting, logged, errors } = this.props;
     return (
       <div className="layout-center">
-        {logged && <Redirect to="/dashboard" />}
+        {logged && <Redirect to="/home" />}
 
         <form onSubmit={handleSubmit(submitValues)} className="form-signin">
           <CardHeader title="Digital Prontuário" shadow="shadow-sm">
