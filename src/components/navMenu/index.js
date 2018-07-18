@@ -9,7 +9,9 @@ const NavMenu = props => {
         <ul className="nav flex-column">
           {props.items.length > 0 &&
             props.items.map(item => (
-              <LinkMenu key={item.label} url={item.url} label={item.label} />
+              <li key={item.label} className="nav-item">
+                <LinkMenu url={item.url} label={item.label} />
+              </li>
             ))}
         </ul>
       </div>

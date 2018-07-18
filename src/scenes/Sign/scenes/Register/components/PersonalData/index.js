@@ -1,7 +1,15 @@
 import React from "react";
 import { Field } from "redux-form";
 import renderInput from "../../../../../../components/renderInput";
-import renderDatePicker from "../../../../../../components/renderDatePicker";
+import {
+  strongPassword,
+  matchPassword,
+  email,
+  cep,
+  crm,
+  phoneMask,
+  cepMask
+} from "../../../../../../util";
 
 const PersonalData = ({ required }) => (
   <div>
@@ -26,7 +34,6 @@ const PersonalData = ({ required }) => (
         validate={[required]}
         col="12"
       />
-
       <Field
         name="email"
         id="email"
@@ -34,11 +41,22 @@ const PersonalData = ({ required }) => (
         component={renderInput}
         type="email"
         label="Email"
-        validate={[required]}
-        col="12"
+        validate={[required, email]}
+        col="6"
       />
       <Field
-        id="fisrt_password"
+        name="crm"
+        id="crm"
+        className="form-control"
+        component={renderInput}
+        type="text"
+        label="Crm"
+        validate={[required, crm]}
+        col="6"
+      />
+      <Field
+        id="password"
+        name="password"
         className="form-control"
         component={renderInput}
         type="password"
@@ -47,13 +65,13 @@ const PersonalData = ({ required }) => (
         col="6"
       />
       <Field
-        name="password"
-        id="password"
+        name="confPassword"
+        id="confPassword"
         className="form-control"
         component={renderInput}
         type="password"
         label="Nova Senha"
-        validate={[required]}
+        validate={[required, strongPassword, matchPassword]}
         col="6"
       />
       <Field
@@ -65,16 +83,17 @@ const PersonalData = ({ required }) => (
         label="Celular"
         validate={[required]}
         col="6"
+        {...phoneMask}
       />
       <Field
         name="dataNascimento"
         id="dataNascimento"
         className="form-control"
-        component={renderDatePicker}
+        component={renderInput}
         label="Data Nascimento"
         validate={[required]}
         col="6"
-       
+        type="date"
       />
       <Field
         name="cep"
@@ -83,8 +102,9 @@ const PersonalData = ({ required }) => (
         component={renderInput}
         type="text"
         label="Cep"
-        validate={[required]}
+        validate={[required, cep]}
         col="12"
+        {...cepMask}
       />
     </div>
   </div>

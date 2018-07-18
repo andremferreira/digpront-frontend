@@ -14,7 +14,7 @@ const Button = props => (
 
 Button.propTypes = {
   submitting: PropTypes.bool,
-  name: PropTypes.string,
+  name: PropTypes.string.isRequired,
   onClick: PropTypes.func,
   color: PropTypes.string
 };

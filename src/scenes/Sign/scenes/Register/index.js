@@ -8,12 +8,11 @@ import PersonalData from "../Register/components/PersonalData";
 import Degree from "../Register/components/Degree";
 import Personalize from "../Register/components/Personalize";
 
-import Stepper from "react-stepper-horizontal";
 import Button from "./components/Button";
-import  NavBar  from "../../../../components/navBar";
+import NavBar from "../../../../components/navBar";
 import { Apresentation } from "./components/Apresentation";
-
-const required = value => (value ? undefined : "Campo obrigatório");
+import { required } from "../../../../util";
+import LinkMenu from "../../../../components/linkMenu";
 
 class Register extends React.Component {
   constructor() {
@@ -63,7 +62,7 @@ class Register extends React.Component {
     return (
       <div className="container">
         <NavBar title="DigProntuário" color="navbar-light">
-          <button className="btn btn-outline-primary"> Login</button>
+          <LinkMenu url="/" label="Login" btn="true"/>
         </NavBar>
 
         <form onSubmit={handleSubmit(submitValues)}>
@@ -96,9 +95,9 @@ class Register extends React.Component {
                 </Apresentation>
               </div>
               <div className="col-6 mt-3">
-                  {currentStep === 0 && <PersonalData required={required} />}
-                  {currentStep === 1 && <Degree required={required} />}
-                  {currentStep === 2 && <Personalize required={required} />}
+                {currentStep === 0 && <PersonalData required={required} />}
+                {currentStep === 1 && <Degree required={required} />}
+                {currentStep === 2 && <Personalize required={required} />}
               </div>
               <div className="col-12 ">
                 {currentStep !== 2 && (
