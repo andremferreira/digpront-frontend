@@ -1,38 +1,45 @@
 import React from "react";
 import CardHeader from "../../../components/cardHeader";
 import { connect } from "react-redux";
-import { Field, reduxForm } from "redux-form";
-import renderInput  from "../../../components/renderInput";
+import { reduxForm } from "redux-form";
+import Address from "./components/Address";
+import Contact from "./components/Contact";
+import Personal from "./components/Personal";
 
 const required = value => (value ? undefined : "Campo obrigatório");
 
-let Patient = props => {
-  
-  return (
-    <div className="layout-center">
+class Patient extends React.Component {
 
-      <form  className="form-signin">
+
+  handleChange = (e) => {
+    console.log(e.target.value);
+    this.props.getCep()
+  }
+
+  render() {
+    return (
+      <form>
         <CardHeader title="Digital Prontuário">
-          <Field
-            name="email"
-            id="email"
-            className="form-control"
-            component={renderInput}
-            type="text"
-            label="Email"
-            validate={[required]}
-          />
+          <div className="form-row">
+            <Personal required={required}/>
+          </div>
+          <div className="form-row">
+            <Address required={required}  onChange={this.handleChange}/>
+          </div>
+          <div className="form-row">
+            <Contact required={required} />
+          </div>
         </CardHeader>
       </form>
-    </div>
-  );
-};
+    );
+  }
+}
 
 Patient = reduxForm({ form: "patientForm", initialValues: {} })(Patient);
 
 const mapDispatchToProps = dispatch => {
   return {
-    submitValues: values => dispatch({ type: "LOGIN_REQUEST", payload: values })
+    getCep: values => dispatch({ type: "CEP_REQUEST", payload: values })
   };
 };
 
@@ -40,4 +47,7 @@ const mapStateToProps = state => ({
   logged: state.login.logged
 });
 
-export default connect(null,null)(Patient);
+export default connect(
+  null,
+  mapDispatchToProps
+)(Patient);

@@ -65,8 +65,8 @@ const PersonalData = ({ required }) => (
         col="6"
       />
       <Field
-        name="confPassword"
-        id="confPassword"
+        name="confirm_password"
+        id="confirm_password"
         className="form-control"
         component={renderInput}
         type="password"
