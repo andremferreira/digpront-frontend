@@ -13,7 +13,7 @@ class Patient extends React.Component {
 
   handleChange = (e) => {
     console.log(e.target.value);
-    this.props.getCep()
+    this.props.getCep(e.target.value)
   }
 
   render() {
