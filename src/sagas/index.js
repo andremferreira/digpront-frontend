@@ -10,7 +10,7 @@ export default function* rootSaga() {
     fork(submitLogin),
     fork(takeLatest, "SUBMIT_RECOVERY", submitRecovery),
     fork(takeLatest, "SUBMIT_REGISTER", submitRegister),
-    fork(authenticated),
-    fork(takeLatest, "CEP_REQUEST", findCep)
+    fork(takeLatest, "CEP_REQUEST", findCep),
+    fork(authenticated)
   ];
 }

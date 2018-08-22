@@ -5,8 +5,8 @@ export default class Api {
     return axios.post(`http://50.30.43.155:3000/${url}`, values);
   }
 
-  static fetchGet(url) {
-    return axios.get(`http://50.30.43.155:3000/${url}`);
+  static fetchGet(url, values) {
+    return axios.get(`http://50.30.43.155:3000/${url}${values}`);
   }
 
   static clearItem(key) {

@@ -12,10 +12,10 @@ const RouteApp = ({ store }) => {
     <Provider store={store}>
       <Router>
         <Switch>
-          <Route exact path="/" component={Auth(Login)} />
-          <Route path="/register" component={Register} />
-          <Route path="/recovery" component={Recovery} />
-          <Route path="/home" component={Auth(Main)} />
+          <Route exact path="/login" component={Auth(Login)} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/recovery" component={Recovery} />
+          <Route path="/" component={Auth(Main)} />
         </Switch>
       </Router>
     </Provider>

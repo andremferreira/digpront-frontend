@@ -11,16 +11,21 @@ import Alert from "../../../../components/alert";
 const required = value => (value ? undefined : "Campo obrigatório!");
 
 class Login extends React.Component {
-
   componentDidMount() {
     this.props.dispatch({ type: "INIT" });
   }
-  
+
   render() {
-    const { handleSubmit, submitValues, submitting, logged, errors } = this.props;
+    const {
+      handleSubmit,
+      submitValues,
+      submitting,
+      logged,
+      errors
+    } = this.props;
     return (
       <div className="layout-center">
-        {logged && <Redirect to="/home" />}
+       {logged && <Redirect to="/dashboard" />}
 
         <form onSubmit={handleSubmit(submitValues)} className="form-signin">
           <CardHeader title="Digital Prontuário" shadow="shadow-sm">

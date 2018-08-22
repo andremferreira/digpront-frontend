@@ -7,7 +7,8 @@ export default function* authenticated() {
   if (response) {
     const { nome } = response;
     yield put({ type: "LOGIN_SUCCESS", payload: { name: nome, logged: true } });
+    yield history.push("/");
     return;
   }
-  yield history.push("/");
+  yield history.push("/login");
 }
