@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import { Field } from "redux-form";
 import renderInput from "../../../../../components/renderInput";
+import { email, phoneMask } from "../../../../../util";
 
 const Contact = ({ required }) => (
   <Fragment>
@@ -11,7 +12,7 @@ const Contact = ({ required }) => (
       component={renderInput}
       type="text"
       label="Email"
-      validate={[required]}
+      validate={[required, email]}
       col="4"
     />
     <Field
@@ -33,6 +34,7 @@ const Contact = ({ required }) => (
       label="Telefone"
       validate={[required]}
       col="2"
+      {...phoneMask}
     />
     <Field
       name="indicacao"

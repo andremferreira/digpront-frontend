@@ -1,6 +1,15 @@
 import React, { Fragment } from "react";
 import { Field } from "redux-form";
 import renderInput from "../../../../../components/renderInput";
+import {
+  strongPassword,
+  matchPassword,
+  email,
+  cep,
+  crm,
+  phoneMask,
+  cepMask
+} from "../../../../../util";
 
 const Personal = ({ required }) => (
   <Fragment>
@@ -25,11 +34,11 @@ const Personal = ({ required }) => (
       col="4"
     />
     <Field
-      name="dataNascimento"
-      id="dataNascimento"
+      name="dt_nascimento"
+      id="dt_nascimento"
       className="form-control"
       component={renderInput}
-      type="text"
+      type="date"
       label="Nascimento"
       validate={[required]}
       col="2"

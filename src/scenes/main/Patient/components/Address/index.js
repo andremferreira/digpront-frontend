@@ -1,10 +1,17 @@
 import React, { Fragment } from "react";
 import { Field } from "redux-form";
 import renderInput from "../../../../../components/renderInput";
+import { cep, cepMask } from "../../../../../util";
+import renderSelect from "../../../../../components/renderSelect";
 
-const Address = ({ required ,onChange}) => (
+const lst = [
+  { name: "pai", isn: "322e", cod: "2424" },
+  { name: "paieee", isn: "322", cod: "24244" }
+];
+
+const Address = ({ required, onChange, disabled }) => (
   <Fragment>
-     <Field
+    <Field
       name="cep"
       id="cep"
       className="form-control"
@@ -14,18 +21,20 @@ const Address = ({ required ,onChange}) => (
       validate={[required]}
       onBlur={onChange}
       col="4"
+      {...cepMask}
     />
     <Field
       name="estado"
       id="estado"
       className="form-control"
-      component={renderInput}
-      type="text"
+      component={renderSelect}
       label="Estado"
       validate={[required]}
+      data={lst}
       col="2"
     />
-     <Field
+
+    <Field
       name="cidade"
       id="cidade"
       className="form-control"
@@ -35,7 +44,7 @@ const Address = ({ required ,onChange}) => (
       validate={[required]}
       col="2"
     />
-     <Field
+    <Field
       name="bairro"
       id="bairro"
       className="form-control"
@@ -55,7 +64,7 @@ const Address = ({ required ,onChange}) => (
       validate={[required]}
       col="8"
     />
-     <Field
+    <Field
       name="complemento"
       id="complemento"
       className="form-control"
@@ -65,9 +74,6 @@ const Address = ({ required ,onChange}) => (
       validate={[required]}
       col="4"
     />
-   
-   
-    
   </Fragment>
 );
 

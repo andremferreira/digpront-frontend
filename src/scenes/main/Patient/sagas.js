@@ -1,19 +1,31 @@
-import { put, call, take, fork } from "redux-saga/effects";
+import { put, call } from "redux-saga/effects";
 import { startSubmit, stopSubmit, reset } from "redux-form";
 import Api from "../../../api";
 
-export default function* findCep(action) {
+export function* findCep(action) {
+  try {
+    const { data } = yield call(Api.fetchGet, "oapi/ceps/", action.payload);
+    yield put({ type: "CEP_SUCCESS", data });
+  } catch (e) {
+    yield put({ type: "CEP_ERROR", payload: e.response.data });
+  }
+}
+
+export function* submitPatient(action) {
   try {
     yield put(startSubmit("patientForm"));
-    const { token } = yield call(Api.getStorageItem, "data");
-    const response = yield call(Api.post, "oapi/ceps", action.payload);
-    console.log(response);
-    const { data } = response.data;
-    yield put({ type: "CEP_SUCCESS", payload: data });
+    console.log("patient", JSON.stringify(action.payload));
+    const response = yield call(
+      Api.post,
+      "api/cadastroPaciente",
+      action.payload
+    );
+  //  yield put({ type: "PATIENT_SUCCESS", payload: response });
     yield put(stopSubmit("patientForm"));
     yield put(reset("patientForm"));
   } catch (e) {
-    yield put({ type: "CEP_ERROR", payload: e.response.data });
+    console.log("error",e.response.data);
+    yield put({ type: "PATIENT_ERROR", payload: e.response.data });
     yield put(stopSubmit("patientForm", e.response.data));
   }
 }
