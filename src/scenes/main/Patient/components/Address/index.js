@@ -4,12 +4,7 @@ import renderInput from "../../../../../components/renderInput";
 import { cep, cepMask } from "../../../../../util";
 import renderSelect from "../../../../../components/renderSelect";
 
-const lst = [
-  { name: "pai", isn: "322e", cod: "2424" },
-  { name: "paieee", isn: "322", cod: "24244" }
-];
-
-const Address = ({ required, onChange, disabled }) => (
+const Address = ({ required, onChange, disabled, ufs }) => (
   <Fragment>
     <Field
       name="cep"
@@ -30,7 +25,7 @@ const Address = ({ required, onChange, disabled }) => (
       component={renderSelect}
       label="Estado"
       validate={[required]}
-      data={lst}
+      data={ufs}
       col="2"
     />
 

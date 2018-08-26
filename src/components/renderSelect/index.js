@@ -15,12 +15,13 @@ const renderSelect = ({
     </small>
     <div className={`form-group${touched && error ? " has-error" : ""}`}>
       <select {...input} className={className}>
-        <option value="">Select a color...</option>
-        {data.map(c => (
-          <option value={c.name} key={c.isn}>
-            {c.name}
-          </option>
-        ))}
+        <option value="">Selecione...</option>
+        {data.length > 0 &&
+          data.map((c, index) => (
+            <option value={c.name} key={index}>
+              {c.name}
+            </option>
+          ))}
       </select>
       {touched &&
         (error && (
@@ -35,7 +36,6 @@ const renderSelect = ({
 renderSelect.propTypes = {
   label: PropTypes.string,
   col: PropTypes.string,
-  input: PropTypes.object,
-  data: PropTypes.array.isRequired
+  input: PropTypes.object
 };
 export default renderSelect;

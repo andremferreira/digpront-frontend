@@ -10,6 +10,9 @@ import {
   phoneMask,
   cepMask
 } from "../../../../../util";
+import renderSelect from "../../../../../components/renderSelect";
+
+const generos = [{ name: "Masculino" }, { name: "Feminino" }];
 
 const Personal = ({ required }) => (
   <Fragment>
@@ -47,10 +50,11 @@ const Personal = ({ required }) => (
       name="genero"
       id="genero"
       className="form-control"
-      component={renderInput}
+      component={renderSelect}
       type="text"
       label="Gênero"
       validate={[required]}
+      data={generos}
       col="2"
     />
   </Fragment>

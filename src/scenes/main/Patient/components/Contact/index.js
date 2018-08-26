@@ -2,8 +2,9 @@ import React, { Fragment } from "react";
 import { Field } from "redux-form";
 import renderInput from "../../../../../components/renderInput";
 import { email, phoneMask } from "../../../../../util";
+import renderSelect from "../../../../../components/renderSelect";
 
-const Contact = ({ required }) => (
+const Contact = ({ required, professional }) => (
   <Fragment>
     <Field
       name="email"
@@ -19,10 +20,11 @@ const Contact = ({ required }) => (
       name="profissao"
       id="profissao"
       className="form-control"
-      component={renderInput}
+      component={renderSelect}
       type="text"
       label="Profissão"
       validate={[required]}
+      data={professional}
       col="4"
     />
     <Field

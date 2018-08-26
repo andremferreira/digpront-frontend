@@ -1,43 +1,24 @@
 import React from "react";
-import CardHeader from "../../../components/cardHeader";
-import { connect } from "react-redux";
-import { Field, reduxForm } from "redux-form";
-import renderInput  from "../../../components/renderInput";
+import Tabs from "../../../components/tabs";
 
-const required = value => (value ? undefined : "Campo obrigatório");
-
-let DashBoard = props => {
-  
-  return (
-    <div className="layout-center">
-
-      <form  className="form-signin">
-        <CardHeader title="Digital Prontuário">
-          <Field
-            name="email"
-            id="email"
-            className="form-control"
-            component={renderInput}
-            type="text"
-            label="Email"
-            validate={[required]}
-          />
-        </CardHeader>
-      </form>
-    </div>
-  );
-};
-
-DashBoard = reduxForm({ form: "dashForm", initialValues: {} })(DashBoard);
-
-const mapDispatchToProps = dispatch => {
-  return {
-    submitValues: values => dispatch({ type: "LOGIN_REQUEST", payload: values })
+class DashBoard extends React.Component {
+  clickme = () => {
+    console.log("clickme deu certo");
   };
-};
 
-const mapStateToProps = state => ({
-  logged: state.login.logged
-});
+  render() {
+    return (
+        <Tabs>
+          <div label="TEste" onClick={this.clickme}>
+            See you later
+          </div>
+          <div label="Croc">
+            After  <em>Crocodile</em>!
+          </div>
+        </Tabs>
 
-export default connect(null,null)(DashBoard);
+    );
+  }
+}
+
+export default DashBoard;

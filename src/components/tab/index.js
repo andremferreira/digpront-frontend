@@ -19,9 +19,9 @@ class Tab extends React.Component {
       props: { activeTab, label }
     } = this;
 
-    let className = "tab-list-item";
+    let className = "nav-item";
     if (activeTab === label) {
-      className += " tab-list-active";
+      className += " nav-link active";
     }
     return (
       <li className={className} onClick={onClick}>
@@ -30,4 +30,5 @@ class Tab extends React.Component {
     );
   }
 }
+
 export default Tab;

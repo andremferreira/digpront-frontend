@@ -2,7 +2,11 @@ import axios from "axios";
 
 export default class Api {
   static post(url, values) {
-    return axios.post(`http://50.30.43.155:3000/${url}`, values);
+    const { data } = this.getStorageItem("data");
+    console.log(data)
+    return axios.post(`http://50.30.43.155:3000/${url}`, values, {
+      //headers: { Authorization: `Bearer ${data.token}` }
+    });
   }
 
   static fetchGet(url, values) {

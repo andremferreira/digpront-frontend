@@ -7,14 +7,21 @@ const renderInput = ({
   type,
   className,
   col,
-  meta: { touched, error }
+  meta: { touched, error },
+  disabled
 }) => (
   <div className={`form-group col-md-${col}`}>
     <small>
       <label className="font-weight-normal">{label}</label>
     </small>
     <div className={`form-group${touched && error ? " has-error" : ""}`}>
-      <input {...input} placeholder={label} type={type} className={className} />
+      <input
+        {...input}
+        disabled={disabled}
+        placeholder={label}
+        type={type}
+        className={className}
+      />
       {touched &&
         (error && (
           <small>

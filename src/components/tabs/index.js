@@ -1,14 +1,56 @@
-import React from 'react';
-import PropTypes from 'prop-types'
+import React from "react";
+import PropTypes from "prop-types";
+import Tab from "../tab";
 
-class Tabs extends React.Component{
-    static propTypes = {
-        children:PropTypes.instanceOf(Array).isRequired,
-    }
-    
-    state = {
-        activeTab: this.props.children[0].props.label,
-    }
+class Tabs extends React.Component {
+  static propTypes = {
+      children:PropTypes.instanceOf(Array).isRequired,
+  };
 
-    onclic
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      activeTab: this.props.children[0].props.label
+    };
+  }
+
+  onClickTabItem = tab => {
+    this.setState({ activeTab: tab });
+  };
+
+  render() {
+    const {
+      onClickTabItem,
+      props: { children },
+      state: { activeTab }
+    } = this;
+
+    return (
+      <div  className="tabs">
+        <ul role="tablist" className="nav nav-tabs" >
+          {children.map(child => {
+            const { label } = child.props;
+
+            return (
+              <Tab
+                activeTab={activeTab}
+                key={label}
+                label={label}
+                onClick={onClickTabItem}
+              />
+            );
+          })}
+        </ul>
+        <div className="tab-content">
+          {children.map(child => {
+            if (child.props.label !== activeTab) return undefined;
+            return child.props.children;
+          })}
+        </div>
+      </div>
+    );
+  }
 }
+
+export default Tabs;

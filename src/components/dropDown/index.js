@@ -1,11 +1,17 @@
 import React from "react";
 import * as Typicons from "react-icons/lib/ti";
+import { NavLink } from "react-router-dom";
 
 class DropDown extends React.Component {
-  state = {
-    isToggleOn: false
-  };
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isToggleOn: false
+    };
+  }
+ 
   show = e => {
     e.preventDefault();
     this.setState({ isToggleOn: true }, () => {
@@ -17,6 +23,10 @@ class DropDown extends React.Component {
     this.setState({ isToggleOn: false }, () => {
       document.removeEventListener("click", this.close);
     });
+  };
+
+  logout = () => {
+    this.props.onClick();
   };
 
   render() {
@@ -42,9 +52,13 @@ class DropDown extends React.Component {
           <a className="dropdown-item" href="#">
             Perfil
           </a>
-          <a className="dropdown-item" href="#">
+          <NavLink
+            className="dropdown-item"
+            to="/home"
+            onClick={this.logout}
+          >
             Sair
-          </a>
+          </NavLink>
         </div>
       </div>
     );

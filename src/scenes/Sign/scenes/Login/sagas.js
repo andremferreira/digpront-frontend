@@ -18,11 +18,12 @@ export function* authorize(payload) {
   }
 }
 
-export default  function* submitLogin() {
+export default function* submitLogin() {
   while (true) {
     const { payload } = yield take("LOGIN_REQUEST");
     yield fork(authorize, payload);
     yield take(["LOGOUT", "LOGIN_ERROR"]);
     yield call(Api.clearItem, "data");
+    
   }
 }
