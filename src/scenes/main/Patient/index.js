@@ -1,7 +1,7 @@
 import React from "react";
 import CardHeader from "../../../components/cardHeader";
 import { connect } from "react-redux";
-import { reduxForm, formValueSelector, change } from "redux-form";
+import { reduxForm, change } from "redux-form";
 import Address from "./components/Address";
 import Contact from "./components/Contact";
 import Personal from "./components/Personal";
@@ -51,7 +51,6 @@ class Patient extends React.Component {
 
   render() {
     const { handleSubmit, submitValues, submitting, invalid } = this.props;
-
     return (
       <CardHeader title="Digital Prontuário">
         <form onSubmit={handleSubmit(submitValues)}>
@@ -97,12 +96,11 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const selector = formValueSelector("patientForm");
 
 const mapStateToProps = state => ({
   cep: state.cep,
   uf: state.uf,
-  professional: state.professional
+  professional: state.professional,
 });
 
 Patient = connect(

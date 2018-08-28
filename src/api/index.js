@@ -1,11 +1,9 @@
 import axios from "axios";
 
 export default class Api {
-  static post(url, values) {
-    const { data } = this.getStorageItem("data");
-    console.log(data)
+  static post(url, values,token) {
     return axios.post(`http://50.30.43.155:3000/${url}`, values, {
-      //headers: { Authorization: `Bearer ${data.token}` }
+      headers: { Authorization: `Bearer ${token}` }
     });
   }
 

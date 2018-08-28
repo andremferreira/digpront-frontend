@@ -5,8 +5,11 @@ export default function* authenticated() {
   const { history } = yield take("AUTHENTICATED");
   const response = yield call(Api.getStorageItem, "data");
   if (response) {
-    const { nome } = response;
-    yield put({ type: "LOGIN_SUCCESS", payload: { name: nome, logged: true } });
+    const { nome, token } = response;
+    yield put({
+      type: "LOGIN_SUCCESS",
+      payload: { name: nome, token: token }
+    });
     yield history.push("/");
     return;
   }
