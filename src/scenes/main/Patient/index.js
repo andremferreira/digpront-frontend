@@ -6,10 +6,15 @@ import Address from "./components/Address";
 import Contact from "./components/Contact";
 import Personal from "./components/Personal";
 import Button from "../../../components/button";
+import moment from "moment"
 
 const required = value => (value ? undefined : "Campo obrigatório");
 
 class Patient extends React.Component {
+  state = {
+    nascimento: {}
+  };
+
   componentDidMount() {
     this.props.getUf();
     this.props.getProfessional();
@@ -49,13 +54,19 @@ class Patient extends React.Component {
     return list.length > 0 && list.map(l => ({ name: l.dscProf }));
   }
 
+  changeFer = e => {
+    console.log(e.target.value)
+    console.log(moment(e.target.value).format());
+    this.setState({});
+  };
+
   render() {
     const { handleSubmit, submitValues, submitting, invalid } = this.props;
     return (
       <CardHeader title="Digital Prontuário">
         <form onSubmit={handleSubmit(submitValues)}>
           <div className="form-row">
-            <Personal required={required} />
+            <Personal required={required} onChangeFer={this.changeFer} />
           </div>
           <div className="form-row">
             <Address
@@ -96,11 +107,10 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-
 const mapStateToProps = state => ({
   cep: state.cep,
   uf: state.uf,
-  professional: state.professional,
+  professional: state.professional
 });
 
 Patient = connect(

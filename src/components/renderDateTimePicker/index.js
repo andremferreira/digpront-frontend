@@ -1,26 +1,28 @@
 import React from "react";
-import DatePicker from "react-datepicker";
+import DateTimePicker from "react-widgets/lib/DateTimePicker";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
 import PropTypes from "prop-types";
 
-const renderDatePicker = ({
-  input,
+
+const renderDateTimePicker = ({
+  input: { onChange, value },
   label,
   className,
   col,
-  meta: { touched, error }
+  meta: { touched, error },
+  showTime
 }) => (
   <div className={`form-group col-md-${col}`}>
     <small>
       <label className="font-weight-normal">{label}</label>
     </small>
     <div className={`form-group${touched && error ? " has-error" : ""}`}>
-      <DatePicker
+      <DateTimePicker
         className={className}
-        {...input}
-        dateFormat="DD/MM/YYYY"
-        selected={input.value ? moment(input.value) : null}
+        format="DD/MM/YYYY"
+        value={!value ? null :moment(value).format()}
+        time={showTime}
       />
       {touched && (error && <span>{error}</span>)}
     </div>
@@ -33,4 +35,4 @@ renderDatePicker.propTypes = {
   input: PropTypes.object
 };
 
-export default renderDatePicker;
+export default renderDateTimePicker;
