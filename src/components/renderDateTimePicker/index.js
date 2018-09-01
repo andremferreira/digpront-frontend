@@ -1,6 +1,6 @@
 import React from "react";
 import DateTimePicker from "react-widgets/lib/DateTimePicker";
-import "react-datepicker/dist/react-datepicker.css";
+//import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
 import PropTypes from "prop-types";
 

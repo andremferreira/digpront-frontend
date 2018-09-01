@@ -13,6 +13,7 @@ export function* submitPatient(action) {
       action.payload,
       token
     );
+    console.log(response)
     yield put({ type: "PATIENT_SUCCESS", payload: response });
     yield put(stopSubmit("patientForm"));
     yield put(reset("patientForm"));

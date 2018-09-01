@@ -11,11 +11,10 @@ import {
   cepMask
 } from "../../../../../util";
 import renderSelect from "../../../../../components/renderSelect";
-import renderDateTimePicker from "../../../../../components/renderDateTimePicker";
 
 const generos = [{ name: "Masculino" }, { name: "Feminino" }];
 
-const Personal = ({ required, onChangeFer }) => (
+const Personal = ({ required }) => (
   <Fragment>
     <Field
       name="nome"
@@ -41,11 +40,11 @@ const Personal = ({ required, onChangeFer }) => (
       name="dt_nascimento"
       id="dt_nascimento"
       className="form-control"
-      component={renderDateTimePicker}
+      component={renderInput}
+      type="date"
       label="Nascimento"
       validate={[required]}
       col="2"
-      //onBlur={onChangeFer}
     />
     <Field
       name="genero"

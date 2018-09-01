@@ -6,15 +6,11 @@ import Address from "./components/Address";
 import Contact from "./components/Contact";
 import Personal from "./components/Personal";
 import Button from "../../../components/button";
-import moment from "moment"
+import moment from "moment";
 
 const required = value => (value ? undefined : "Campo obrigatório");
 
 class Patient extends React.Component {
-  state = {
-    nascimento: {}
-  };
-
   componentDidMount() {
     this.props.getUf();
     this.props.getProfessional();
@@ -54,19 +50,23 @@ class Patient extends React.Component {
     return list.length > 0 && list.map(l => ({ name: l.dscProf }));
   }
 
-  changeFer = e => {
-    console.log(e.target.value)
-    console.log(moment(e.target.value).format());
-    this.setState({});
+  submit = values => {
+    const { submitValues, medicoId } = this.props;
+    let { dt_nascimento } = values;
+    dt_nascimento = this.formatDate(dt_nascimento);
+    const newValue = { ...values, medicoId, dt_nascimento };
+    submitValues(newValue);
   };
 
+  formatDate = dt => moment(dt).format("YYYY-MM-DDT00:00:00");
+
   render() {
-    const { handleSubmit, submitValues, submitting, invalid } = this.props;
+    const { handleSubmit, submitting, invalid } = this.props;
     return (
       <CardHeader title="Digital Prontuário">
-        <form onSubmit={handleSubmit(submitValues)}>
+        <form onSubmit={handleSubmit(this.submit)}>
           <div className="form-row">
-            <Personal required={required} onChangeFer={this.changeFer} />
+            <Personal required={required} />
           </div>
           <div className="form-row">
             <Address
@@ -108,6 +108,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 const mapStateToProps = state => ({
+  medicoId: state.login.medicoId,
   cep: state.cep,
   uf: state.uf,
   professional: state.professional
