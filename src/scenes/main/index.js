@@ -7,12 +7,13 @@ import NavBar from "../../components/navBar";
 import DropDown from "../../components/dropDown";
 import NavMenu from "../../components/navMenu";
 import Dashboard from "./Dashboard";
+import MedicalRecord from "./MedicalRecord";
 
 const menu = [
   { label: "DashBoard", url: "/dashboard" },
   { label: "Pacientes", url: "/patient" },
   { label: "Fila de Atendimento", url: "/patient" },
-  { label: "Agendamentos", url: "/" }
+  { label: "Agendamentos", url: "/medicalRecord" }
 ];
 
 class Main extends React.Component {
@@ -41,6 +42,7 @@ class Main extends React.Component {
               >
                 <Route path="/dashboard" component={Dashboard} />
                 <Route path="/patient" component={Patient} />
+                <Route path="/medicalRecord" component={MedicalRecord} />
               </main>
             </div>
           </div>

@@ -3,7 +3,10 @@ import axios from "axios";
 export default class Api {
   static post(url, values, token) {
     return axios.post(`http://50.30.43.155:3000/${url}`, values, {
-      headers: { Authorization: `${token}` }
+      headers: {
+        Authorization: `${token}`,
+       //"Content-Type": "application/json"
+      }
     });
   }
 

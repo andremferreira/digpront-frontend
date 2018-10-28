@@ -18,6 +18,7 @@ const Auth = Component => {
       return <Component {...this.props} />;
     }
   }
+
   const mapStateToProps = state => ({
     logged: state.login.logged
   });

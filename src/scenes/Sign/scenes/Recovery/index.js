@@ -46,7 +46,7 @@ class Recovery extends React.Component {
               color="info"
             />
             <div className="d-flex justify-content-between mt-2 ">
-              <LinkButton color="text-muted " url="/">
+              <LinkButton color="text-muted " url="/login">
                 Voltar ao login
               </LinkButton>
             </div>
